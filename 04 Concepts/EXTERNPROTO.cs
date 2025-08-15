@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Free.FileFormats.VRML.InterfaceDeclarations;
 using Free.FileFormats.VRML.Interfaces;
 using Free.FileFormats.VRML.Fields;
+using Free.FileFormats.VRML.X3DVisitation;
 
 namespace Free.FileFormats.VRML.Nodes
 {
@@ -39,8 +40,10 @@ namespace Free.FileFormats.VRML.Nodes
 
 		internal override X3DPrototypeInstance GetProto() { return new EXTERNPROTO(); }
 
-		#region Dummy Implementations to satisfy compiler
-		SFVec3f X3DBoundedObject.BBoxCenter { get; set; }
+        public void Accept(IX3DVisitor visitor) => visitor.Visit(this);
+
+        #region Dummy Implementations to satisfy compiler
+        SFVec3f X3DBoundedObject.BBoxCenter { get; set; }
 		SFVec3f X3DBoundedObject.BBoxSize { get; set; }
 		List<X3DChildNode> X3DGroupingNode.Children { get; set; }
 		bool X3DLayerNode.IsPickable { get; set; }

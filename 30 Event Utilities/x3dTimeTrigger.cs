@@ -1,4 +1,5 @@
-﻿using Free.FileFormats.VRML.Interfaces;
+using Free.FileFormats.VRML.Interfaces;
+using Free.FileFormats.VRML.X3DVisitation;
 
 namespace Free.FileFormats.VRML.Nodes
 {
@@ -12,5 +13,7 @@ namespace Free.FileFormats.VRML.Nodes
 		}
 
 		internal override X3DPrototypeInstance GetProto() { return new x3dTimeTriggerPROTO(); }
-	}
+
+        public void Accept(IX3DVisitor visitor) => visitor.Visit(this);
+    }
 }

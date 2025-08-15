@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Free.FileFormats.VRML.Fields;
 using Free.FileFormats.VRML.Interfaces;
+using Free.FileFormats.VRML.X3DVisitation;
 
 namespace Free.FileFormats.VRML.Nodes
 {
@@ -8,7 +9,7 @@ namespace Free.FileFormats.VRML.Nodes
 	/// A Group node contains children nodes without introducing a new transformation.
 	/// </summary>
 	public class x3dGroup : X3DNode, X3DGroupingNode
-	{
+    {
 		public List<X3DChildNode> Children { get; set; }
 		public SFVec3f BBoxCenter { get; set; }
 		public SFVec3f BBoxSize { get; set; }
@@ -41,5 +42,7 @@ namespace Free.FileFormats.VRML.Nodes
 			else return false;
 			return true;
 		}
-	}
+
+        public void Accept(IX3DVisitor visitor) => visitor.Visit(this);
+    }
 }

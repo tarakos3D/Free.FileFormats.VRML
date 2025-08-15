@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Free.FileFormats.VRML.Fields;
 using Free.FileFormats.VRML.Interfaces;
+using Free.FileFormats.VRML.X3DVisitation;
 
 namespace Free.FileFormats.VRML.Nodes
 {
@@ -38,5 +39,7 @@ namespace Free.FileFormats.VRML.Nodes
 			else return false;
 			return true;
 		}
-	}
+
+        public void Accept(IX3DVisitor visitor) => visitor.Visit(this);
+    }
 }

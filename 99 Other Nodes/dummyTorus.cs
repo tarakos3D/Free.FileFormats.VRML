@@ -1,4 +1,5 @@
-﻿using Free.FileFormats.VRML.Interfaces;
+using Free.FileFormats.VRML.Interfaces;
+using Free.FileFormats.VRML.X3DVisitation;
 
 namespace Free.FileFormats.VRML.Nodes
 {
@@ -8,5 +9,7 @@ namespace Free.FileFormats.VRML.Nodes
 		// http://doc.instantreality.org/documentation/nodetype/Torus/
 
 		internal override X3DPrototypeInstance GetProto() { return new dummyTorusPROTO(); }
-	}
+
+        public void Accept(IX3DVisitor visitor) => visitor.Visit(this);
+    }
 }
