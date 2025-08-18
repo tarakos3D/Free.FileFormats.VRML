@@ -6,6 +6,7 @@ public interface IX3DVisitor
 {
     void Visit(Scene scene);
     void Visit(x3dGroup group);
+    void Visit(x3dCollision collision);
     void Visit(x3dTransform transform);
     void Visit(x3dShape shape);
     void Visit(x3dBox box);
